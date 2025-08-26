@@ -173,22 +173,55 @@
     /* =========================
        PORTFÓLIO
        ========================= */
-    .grid{
-      display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
+    /* =========================
+   PORTFÓLIO
+   ========================= */
+/* =========================
+   PORTFÓLIO
+   ========================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 1000px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
     }
-    @media (max-width: 1000px){ .grid{grid-template-columns:1fr 1fr} }
-    @media (max-width: 640px){ .grid{grid-template-columns:1fr} }
-    .tile{
-      aspect-ratio: 4 / 3;
-      border-radius:18px; overflow:hidden; position:relative;
-      background: #0f1115; border:1px solid rgba(255,255,255,.08);
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
     }
-    .tile img{ width:100%; height:100%; object-fit:cover; display:block; opacity:.95 }
-    .tile__tag{
-      position:absolute; left:10px; top:10px; padding:6px 10px; border-radius:999px;
-      background:rgba(0,0,0,.45); color:#EAF1FF; font-weight:700; font-size:.8rem; border:1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(4px);
-    }
+}
+
+.portfolio-item {
+    aspect-ratio: 4 / 3;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: #0f1115;
+    border: 1px solid rgba(255, 255, 255, .08);
+    display: block;
+    text-decoration: none;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: .95;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05); /* Efeito de zoom */
+    opacity: 1;
+}
+    
 
     /* =========================
        SOBRE
@@ -249,7 +282,7 @@
       </a>
 
       <nav id="menu" class="menu" aria-label="Navegação principal">
-        <a href="#servicos">Serviços</a>
+        <a href="servicos.html">Serviços</a>
         <a href="#portfolio">Portfólio</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
@@ -328,21 +361,37 @@
          PORTFÓLIO
          ========================= -->
     <section id="portfolio">
-      <div class="container">
+    <div class="container">
         <h2 class="section__title">Portfólio</h2>
-        <p class="section__desc">Algumas aplicações da identidade JEFIGN. Substitua pelas suas imagens finais.</p>
+        <p class="section__desc">Conheça alguns dos nossos trabalhos. Clique para ver mais detalhes.</p>
 
         <div class="grid">
-          <!-- Substitua os src por suas imagens de mockup -->
-          <figure class="tile"><span class="tile__tag">Cartão</span><img src="mockup/Cards_Mockup.png" alt="Cartão de visita JEFIGN"></figure>
-          <figure class="tile"><span class="tile__tag">Stationery</span><img src="mockup/Stationery.png" alt="Papelaria corporativa"></figure>
-          <figure class="tile"><span class="tile__tag">Chaveiros</span><img src="mockup/chaveiros.png" alt="Brindes JEFIGN"></figure>
-          <figure class="tile"><span class="tile__tag">Uniforme</span><img src="mockup/moleton.png" alt="Camiseta/Uniforme"></figure>
-          <figure class="tile"><span class="tile__tag">Digital</span><img src="mockup/Printing_Poster.png" alt="Aplicação digital"></figure>
-          <figure class="tile"><span class="tile__tag">Outdoor</span><img src="mockup/Signboard.png" alt="Outdoor JEFIGN"></figure>
+            <a href="projeto-jefign.html" class="portfolio-item">
+                <img src="mockup/" alt="Cartão de visita JEFIGN">
+            </a>
+
+            <a href="projeto-2.html" class="portfolio-item">
+                <img src="mockup/Stationery.png" alt="Papelaria corporativa">
+            </a>
+
+            <a href="projeto-3.html" class="portfolio-item">
+                <img src="mockup/chaveiros.png" alt="Brindes JEFIGN">
+            </a>
+            
+            <a href="projeto-4.html" class="portfolio-item">
+                <img src="mockup/moleton.png" alt="Camiseta/Uniforme">
+            </a>
+
+            <a href="projeto-5.html" class="portfolio-item">
+                <img src="mockup/Printing_Poster.png" alt="Aplicação digital">
+            </a>
+
+            <a href="projeto-6.html" class="portfolio-item">
+                <img src="mockup/Signboard.png" alt="Outdoor JEFIGN">
+            </a>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
     <!-- =========================
          SOBRE

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Projetos - JEFIGN</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ESTILOS ESPECÍFICOS PARA ESTA PÁGINA */
+        @font-face{
+      font-family:"MonumentExtended-Regular";
+      src:url("fonte/MonumentExtended-Regular.otf") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    } 
+        .project-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .project-header h1 {
+            font-family: MonumentExtended-Regular;
+            color: #366BB3;
+            margin-bottom: 10px;
+        }
+        
+        .project-header p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: .8;
+        }
+
+        .project-content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, .1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #366BB3;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: .8;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        /* ESTILOS DO BOTÃO VOLTAR AO TOPO */
+        #backToTop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: rgba(255, 255, 255, .1);
+            color: #366BB3;
+            border: 1px solid rgba(255, 255, 255, .2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+
+        #backToTop.show {
+            opacity: 100;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="padding-top: 20px;">
+        <a href="index.html#portfolio" class="back-link">&lt; Voltar </a>
+    </div>
+
+    <main class="project-content">
+        <header class="project-header">
+            <h1>Identidade Visual JEFIGN</h1>
+            
+        </header>
+        
+        <img src="mockup/Cards_Mockup.png" alt="Mockup de Cartão de Visita" class="project-image">
+        <img src="mockup/Stationery.png" alt="Mockup de Papelaria Corporativa" class="project-image">
+        <img src="mockup/chaveiros.png" alt="Mockup de Chaveiros" class="project-image">
+        <img src="mockup/moleton.png" alt="Mockup de Moletom" class="project-image">
+        <img src="mockup/Printing_Poster.png" alt="Mockup de Pôster" class="project-image">
+        <img src="mockup/Signboard.png" alt="Mockup de Letreiro" class="project-image">
+        <img src="mockup/logo-grid.png" alt="Construção do logotipo em grid" class="project-image">
+        <img src="mockup/mockup-celular.png" alt="Mockup de aplicativo de celular" class="project-image">
+        <img src="mockup/mockup-caneca.png" alt="Mockup de canecas" class="project-image">
+
+    </main>
+
+    <footer>
+        <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+            <div>© <span id="yr"></span> JEFIGN — Visual Identity & Social Media</div>
+            <div><a href="#topo"></a></div>
+        </div>
+    </footer>
+
+    <a id="backToTop" href="#">↑</a>
+
+    <script>
+        // JS para mostrar e esconder o botão "Voltar ao topo"
+        const backToTopButton = document.getElementById("backToTop");
+        
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+    </script>
+</body>
+</html>
