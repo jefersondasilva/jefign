@@ -3,97 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <title>Galeria de Projetos - JEFIGN</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* ESTILOS ESPECÍFICOS PARA ESTA PÁGINA */
-        @font-face{
-      font-family:"MonumentExtended-Regular";
-      src:url("fonte/MonumentExtended-Regular.otf") format("woff2");
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
+    /* ESTILOS ESPECÍFICOS PARA ESTA PÁGINA */
+    @font-face{
+        font-family:"MonumentExtended-Regular";
+        src:url("fonte/MonumentExtended-Regular.otf") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
     } 
-        .project-header {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
+    .project-header {
+        text-align: center;
+        padding: 80px 20px 40px;
+    }
 
-        .project-header h1 {
-            font-family: MonumentExtended-Regular;
-            color: #366BB3;
-            margin-bottom: 10px;
-        }
-        
-        .project-header p {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            opacity: .8;
-        }
+    .project-header h1 {
+        font-family: MonumentExtended-Regular;
+        color: #366BB3;
+        margin-bottom: 10px;
+    }
+    
+    .project-header p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        opacity: .8;
+    }
 
-        .project-content {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        
-        .project-image {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 1px solid rgba(255, 255, 255, .1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .project-content {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+    
+    .project-image {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin: 20px 0;
+        border: 1px solid rgba(255, 255, 255, .1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer; /* Adiciona cursor de ponteiro para indicar que é clicável */
+    }
 
-        .project-image:hover {
-            transform: scale(1.01);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #366BB3;
-            text-decoration: none;
-            font-weight: 600;
-            opacity: .8;
-            transition: opacity 0.3s ease;
-        }
+    /* Zoom leve ao passar o mouse */
+    .project-image:hover {
+        transform: scale(1.01); /* Zoom leve */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    }
+    
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #366BB3;
+        text-decoration: none;
+        font-weight: 600;
+        opacity: .8;
+        transition: opacity 0.3s ease;
+    }
 
-        .back-link:hover {
-            opacity: 1;
-        }
+    .back-link:hover {
+        opacity: 1;
+    }
 
-        /* ESTILOS DO BOTÃO VOLTAR AO TOPO */
-        #backToTop {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background-color: rgba(255, 255, 255, .1);
-            color: #366BB3;
-            border: 1px solid rgba(255, 255, 255, .2);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 999;
-        }
+    /* ESTILOS DO BOTÃO VOLTAR AO TOPO */
+    #backToTop {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: rgba(255, 255, 255, .1);
+        color: #366BB3;
+        border: 1px solid rgba(255, 255, 255, .2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        z-index: 999;
+    }
 
-        #backToTop.show {
-            opacity: 100;
-            visibility: visible;
-        }
-    </style>
+    #backToTop.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* ESTILOS PARA O OVERLAY DE ZOOM DA IMAGEM */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000; /* Garante que o overlay fique por cima de tudo */
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .overlay.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .overlay img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-button {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .close-button:hover {
+        opacity: 0.7;
+    }
+</style>
 </head>
 <body>
 
@@ -104,29 +153,38 @@
     <main class="project-content">
         <header class="project-header">
             <h1>Identidade Visual JEFIGN</h1>
-            
-        </header>
+            </header>
         
-        <img src="mockup-jefing/" alt="Mockup de Cartão de Visita" class="project-image">
-        <img src="mockup/Stationery.png" alt="Mockup de Papelaria Corporativa" class="project-image">
-        <img src="mockup/chaveiros.png" alt="Mockup de Chaveiros" class="project-image">
-        <img src="mockup/moleton.png" alt="Mockup de Moletom" class="project-image">
-        <img src="mockup/Printing_Poster.png" alt="Mockup de Pôster" class="project-image">
-        <img src="mockup/Signboard.png" alt="Mockup de Letreiro" class="project-image">
-        <img src="mockup/logo-grid.png" alt="Construção do logotipo em grid" class="project-image">
-        <img src="mockup/mockup-celular.png" alt="Mockup de aplicativo de celular" class="project-image">
-        <img src="mockup/mockup-caneca.png" alt="Mockup de canecas" class="project-image">
+        <img src="mockup-jefing/Apresentaçao_Prancheta 1.jpg" alt="Logo JEFING" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-02.jpg" alt="Descrição da Marca" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-03.jpg" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-04.jpg" alt="Tipografias" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-05.jpg" alt="Paleta de Cor" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-06.jpg" alt="Logo Variações" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-07.jpg" alt="Estampas" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-08.jpg" alt="Mockup Logo" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-09.jpg" alt="cartões de visita" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-10.jpg" alt="Stationery01" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-11.jpg" alt="Stationery" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-12.jpg" alt="Canecas" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-13.jpg" alt="Caneta" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-14.jpg" alt="chaveiros" class="project-image">
+        <img src="mockup-jefing/Apresentaçao-15.jpg" alt="Stationery" class="project-image">
 
     </main>
 
     <footer>
         <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
             <div>© <span id="yr"></span> JEFIGN — Visual Identity & Social Media</div>
-            <div><a href="#topo"></a></div>
-        </div>
+            <div><a href="#topo"></a></div> </div>
     </footer>
 
     <a id="backToTop" href="#">↑</a>
+
+    <div class="overlay" id="imageOverlay">
+        <button class="close-button" id="closeOverlay">&times;</button>
+        <img src="" alt="Imagem em Zoom" id="zoomedImage">
+    </div>
 
     <script>
         // JS para mostrar e esconder o botão "Voltar ao topo"
@@ -139,6 +197,33 @@
                 backToTopButton.classList.remove("show");
             }
         });
+
+        // JS para o zoom da imagem ao clicar
+        const projectImages = document.querySelectorAll(".project-image");
+        const imageOverlay = document.getElementById("imageOverlay");
+        const zoomedImage = document.getElementById("zoomedImage");
+        const closeOverlayButton = document.getElementById("closeOverlay");
+
+        projectImages.forEach(image => {
+            image.addEventListener("click", () => {
+                zoomedImage.src = image.src; // Define a imagem do overlay para a imagem clicada
+                imageOverlay.classList.add("active"); // Mostra o overlay
+            });
+        });
+
+        closeOverlayButton.addEventListener("click", () => {
+            imageOverlay.classList.remove("active"); // Esconde o overlay
+        });
+
+        imageOverlay.addEventListener("click", (event) => {
+            // Fecha o overlay se clicar fora da imagem em zoom
+            if (event.target === imageOverlay) {
+                imageOverlay.classList.remove("active");
+            }
+        });
+
+        // Ano no rodapé
+        document.getElementById('yr').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
