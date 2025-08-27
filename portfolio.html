@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
-    <title>Serviços — JEFIGN</title>
-    <meta name="description" content="Serviços de Identidade Visual, Social Media e Materiais Gráficos da JEFIGN." />
+    <title>Portfólio — JEFIGN</title>
+    <meta name="description" content="Portfólio de Identidade Visual e Social Media da JEFIGN." />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root{
@@ -68,28 +68,33 @@
         .main-content {
             padding: 64px 0;
         }
-        .service-card {
+        .project-card {
             background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
             border: 1px solid rgba(255,255,255,.08);
             border-radius: 20px;
             padding: 22px;
             box-shadow: var(--shadow-1);
-            margin-bottom: 24px;
+            margin-bottom: 40px;
         }
-        .service-card h2 {
+        .project-card h2 {
             font-family:"MonumentExtended-Regular", Inter, sans-serif;
             font-size: clamp(1.6rem, 3vw, 2rem);
             margin-top: 0;
         }
-        .service-card p {
+        .project-card p {
             color: #D6DEED;
             line-height: 1.6;
         }
-        .service-card ul {
-            color: #D6DEED;
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
-        .service-card li {
-            margin-bottom: 8px;
+        .project-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
         }
         .btn {
             padding:12px 18px; border-radius:12px; font-weight:800; text-decoration:none; display:inline-block;
@@ -105,6 +110,43 @@
             text-align: center;
         }
         footer a{ color:#EAF1FF; text-decoration:none }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        @media (max-width: 1000px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .portfolio-item {
+            aspect-ratio: 4 / 3;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            background: #0f1115;
+            border: 1px solid rgba(255, 255, 255, .08);
+            display: block;
+            text-decoration: none;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: .95;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -116,62 +158,30 @@
             <nav id="menu" class="menu" aria-label="Navegação principal">
                 <a href="servicos.html">Serviços</a>
                 <a href="portfolio.html">Portfólio</a>
+                <a href="index.html#sobre">Sobre</a>
                 <a href="index.html#contato">Contato</a>
                 <a class="cta" href="index.html#contato">Solicitar projeto</a>
             </nav>
         </div>
     </header>
-
     <main class="main-content">
         <div class="container">
-            <h1 class="h1" style="text-align: center;">Nossos Serviços</h1>
-            <p class="section__desc" style="text-align: center;">Soluções de design para fortalecer sua presença e construir uma marca memorável.</p>
-
-            <div class="service-card">
-                <h2>Identidade Visual & Branding</h2>
-                <p>Criação de logotipo, paleta de cores, tipografia e manual da marca. Um sistema visual completo para sua empresa. Oferecemos um processo detalhado:</p>
-                <ul>
-                    <li>Análise e pesquisa de mercado e público-alvo.</li>
-                    <li>Criação de 2 conceitos de logo com 2 revisões.</li>
-                    <li>Definição da paleta de cores e tipografias.</li>
-                    <li>Desenvolvimento de um Manual da Marca completo.</li>
-                    <li>Entrega de todos os arquivos editáveis (Ai, EPS, SVG, PDF) e prontos para uso (PNG, JPG).</li>
-                </ul>
+            <h1 class="h1" style="text-align: center;">Portfólio Completo</h1>
+            <p class="section__desc" style="text-align: center;">Detalhes de alguns dos projetos de identidade visual e social media que desenvolvi.</p>
+            <div class="grid">
+                <a href="projeto-jefign.html" class="portfolio-item">
+                    <img src="mockup-jefing/Apresentaçao-08.jpg" alt="Identidade Visual JEFIGN">
+                </a>
+                <a href="projeto-Rebeca.html" class="portfolio-item">
+                    <img src="imagens/Logo Rebeca.png" alt="Identidade Visual Rebeca Camara">
+                </a>
             </div>
-
-            <div class="service-card">
-                <h2>Design para Social Media</h2>
-                <p>Criação de posts, stories e capas para suas redes sociais. Nosso foco é em consistência, estética e estratégia de comunicação para aumentar seu engajamento e presença online.</p>
-                <ul>
-                    <li>Criação de templates personalizados para o seu nicho.</li>
-                    <li>Design de posts estáticos e carrosséis.</li>
-                    <li>Design de stories interativos e capas para destaques.</li>
-                    <li>Otimização para diferentes plataformas (Instagram, Facebook, LinkedIn, etc.).</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <h2>Materiais Gráficos</h2>
-                <p>Desenvolvimento de materiais impressos e digitais que complementam a sua identidade visual. Seja para um evento, uma promoção ou para o dia a dia do seu negócio, garantimos que todas as peças estarão alinhadas à sua marca.</p>
-                <ul>
-                    <li>Flyers e Banners (digitais e impressos).</li>
-                    <li>Cartões de visita e Papelaria.</li>
-                    <li>Apresentações institucionais.</li>
-                    <li>Peças personalizadas sob medida.</li>
-                </ul>
-            </div>
-            
-            <div style="text-align: center; margin-top: 40px;">
-                <a class="btn btn--primary" href="index.html#contato">Solicitar um Orçamento</a>
-            </div>
-
         </div>
     </main>
-
     <footer>
         <div class="container">
             <div>© <span id="yr"></span> JEFIGN — Visual Identity & Social Media</div>
-            <div><a href="#topo">Voltar ao topo ↑</a></div>
+            <div><a href="index.html">Voltar para Home</a></div>
         </div>
     </footer>
     <script>
