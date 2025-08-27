@@ -37,14 +37,14 @@
 
     html{scroll-behavior:smooth}
     body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      margin: 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
       color: var(--paper);
       background: linear-gradient(180deg, #181A1F 0%, var(--ink) 100%);
     }
 
     /* Container responsivo */
-    .container{ width:min(1120px, 92%); margin-inline:auto; }
+    .container{ width: min(1120px, 92%); margin-inline:auto; }
 
     /* =========================
        HEADER / NAV
@@ -89,8 +89,13 @@
     .burger{display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:transparent; color:#fff}
 
     /* Mobile menu */
-    @media (max-width: 900px){
-      .menu{display:none}
+    @media (max-width: 768px) {
+    .menu {
+        display: none; /* Esconde o menu em telas pequenas */
+    }
+    .nav {
+        justify-content: space-between;
+    }
       .burger{display:inline-grid; place-items:center}
       .menu--open{
         position:fixed; inset:64px 0 auto 0; display:grid; gap:18px;
@@ -231,7 +236,7 @@
       background: radial-gradient(140% 140% at 10% 0%, rgba(54,107,179,.25), transparent 60%);
       border-radius:24px; border:1px solid rgba(255,255,255,.08); padding:26px;
     }
-    @media (max-width: 900px){ .about{grid-template-columns:1fr} }
+    @media (max-width: 500vw){ .about{grid-template-columns:1fr} }
 
     .badge-kpi{
       display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px;
