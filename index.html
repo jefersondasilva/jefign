@@ -231,17 +231,32 @@
     /* =========================
        SOBRE
        ========================= */
-    .about{
-      display:grid; grid-template-columns: 1fr 1fr; gap:34px; align-items:center;
-      background: radial-gradient(140% 140% at 10% 0%, rgba(54,107,179,.25), transparent 60%);
-      border-radius:24px; border:1px solid rgba(255,255,255,.08); padding:26px;
-      
-    }
-    @media (max-width: 768px) {
+    /* =========================
+   SOBRE
+   ========================= */
+  .about{
+    display:grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap:34px; 
+    align-items:start; /* <-- já deixamos no start para não cortar nada */
+    background: radial-gradient(140% 140% at 10% 0%, rgba(54,107,179,.25), transparent 60%);
+    border-radius:24px; 
+    border:1px solid rgba(255,255,255,.08); 
+    padding:26px;
+  }
+
+  @media (max-width: 768px) {
     .about {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; /* fica em coluna */
+      align-items:start;          /* impede corte */
+      padding:20px;               /* mais respiro */
     }
+
+    .about .hero__card {
+      margin-top:18px;            /* separa o card do texto */
     }
+  }
+
 
     .badge-kpi{
       display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px;
