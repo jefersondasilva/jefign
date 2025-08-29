@@ -1,309 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
-    <title>Portfólio — JEFIGN</title>
-    <meta name="description" content="Portfólio de Identidade Visual e Social Media da JEFIGN." />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-    :root {
-        --brand-blue: #366BB3;
-        --ink: #1E1E1E;
-        --indigo: #5D57A1;
-        --sky: #B5D1EF;
-        --paper: #FAFAFA;
-        --muted: #8EA5C4;
-        --radius: 16px;
-        --shadow-1: 0 10px 30px rgba(0, 0, 0, .12);
-        --shadow-2: 0 20px 50px rgba(0, 0, 0, .18);
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+  <title>Portfólio — JEFIGN</title>
+  <meta name="description" content="Portfólio de Identidade Visual e Social Media da JEFIGN." />
+
+  <!-- Inter (texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-blue: #366BB3;
+      --ink:        #1E1E1E;
+      --indigo:     #5D57A1;
+      --sky:        #B5D1EF;
+      --paper:      #FAFAFA;
+      --muted:      #8EA5C4;
+      --radius:     16px;
+      --shadow-1:   0 10px 30px rgba(0,0,0,.12);
+      --shadow-2:   0 20px 50px rgba(0,0,0,.18);
     }
-    @font-face {
-        font-family: "MonumentExtended-Regular";
-        src: url("fonte/MonumentExtended-Regular.otf") format("woff2");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-    }
-    html { scroll-behavior: smooth }
-    body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-        color: var(--paper);
-        background: linear-gradient(180deg, #181A1F 0%, var(--ink) 100%);
+    @font-face{
+      font-family:"MonumentExtended-Regular";
+      src:url("fonte/MonumentExtended-Regular.otf") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
     }
 
-    h1 {
-        font-family: 'MonumentExtended-Regular'; 
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--paper);
+      background: linear-gradient(180deg, #181A1F 0%, var(--ink) 100%);
     }
-    
-    .container { width: min(1120px, 92%); margin-inline: auto; }
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background: rgba(30, 30, 30, .85);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid rgba(255, 255, 255, .06);
+    .container{ width:min(1120px, 92%); margin-inline:auto; }
+
+    /* =========================
+       HEADER / NAV (igual à index)
+       ========================= */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(30,30,30,.85);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    /* Estilo para remover a transparência do header quando o menu estiver aberto */
-    body.menu-open header {
-        background: var(--ink);
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
     }
-    .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 0;
+    .brand{
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+      color:var(--paper);
     }
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: var(--paper);
-    }
-    .brand__logo {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        display: grid;
-        place-items: center;
-        box-shadow: var(--shadow-1);
-        font-weight: 800;
-    }
-    .menu {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-    }
-    .menu a {
-        color: #e9eefb;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: .95rem;
-        opacity: .9;
+    .brand__logo{
+      width:38px; height:38px; border-radius:10px;
+      display:grid; place-items:center;
+      box-shadow: var(--shadow-1);
+      font-weight:800;
     }
 
-    .close-menu-button {
-        display: none;
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        font-size: 2rem;
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        z-index: 70;
+    .menu{display:flex; gap:24px; align-items:center;}
+    .menu a{
+      color:#e9eefb; text-decoration:none; font-weight:600; font-size:.95rem;
+      opacity:.9;
+    }
+    .menu a:hover{opacity:1; color:#fff}
+    .cta{
+      padding:10px 16px; border-radius:999px; font-weight:700; text-decoration:none;
+      background: linear-gradient(135deg, var(--brand-blue), var(--indigo));
+      color:white; box-shadow: var(--shadow-1); border:1px solid rgba(255,255,255,.06);
+    }
+    .burger{
+      display:none; width:40px; height:40px; border-radius:10px;
+      border:1px solid rgba(255,255,255,.12); background:transparent; color:#fff
     }
 
-    .menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        padding: 0;
-        z-index: 60;
-    }
-
+    /* Mobile menu (igual à index) */
     @media (max-width: 768px) {
-        .menu-toggle {
-            display: block;
-        }
-        .close-menu-button {
-            display: block;
-        }
-        .menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100%;
-            flex-direction: column;
-            padding: 60px 20px 20px;
-            background: var(--ink); /* Esta regra fará o menu ter a cor sólida */
-            transition: right 0.3s ease-in-out;
-            z-index: 55;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-        }
-        .menu a, .menu .cta {
-            width: 100%;
-            text-align: left;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
+      .menu { display:none; }            /* esconde o menu */
+      .nav { justify-content:space-between; }
+      .burger{ display:inline-grid; place-items:center }
+      .menu--open{
+        position:fixed; inset:64px 0 auto 0; display:grid; gap:18px;
+        background:#16171B; padding:20px; border-top:1px solid rgba(255,255,255,.06);
+      }
+      .menu--open a{ padding:10px 2px }
+    }
 
-        .menu a:last-of-type, .menu .cta:last-of-type {
-            border-bottom: none;
-        }
+    /* =========================
+       TÍTULOS
+       ========================= */
+    .h1{
+      margin:14px 0 6px;
+      font-family:"MonumentExtended-Regular", Inter, sans-serif;
+      font-weight:800; line-height:1.05; letter-spacing:.3px;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+    }
+    .section__desc{ color:#D6DEED; margin-bottom:26px; max-width:70ch }
 
-        .menu.is-open {
-            right: 0;
-            z-index: 100; /* Use um z-index bem alto para garantir que cubra o header */
-        }
+    /* =========================
+       CONTEÚDO
+       ========================= */
+    .main-content { padding:64px 0; }
+
+    .grid{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;
     }
-    .menu a:hover { opacity: 1; color: #fff }
-    .cta {
-        padding: 10px 16px;
-        border-radius: 999px;
-        font-weight: 700;
-        text-decoration: none;
-        background: linear-gradient(135deg, var(--brand-blue), var(--indigo));
-        color: white;
-        box-shadow: var(--shadow-1);
-        border: 1px solid rgba(255, 255, 255, .06);
+    @media (max-width:1000px){ .grid{ grid-template-columns:1fr 1fr } }
+    @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
+
+    .portfolio-item{
+      aspect-ratio:4 / 3; border-radius:18px; overflow:hidden; position:relative;
+      background:#0f1115; border:1px solid rgba(255,255,255,.08); display:block; text-decoration:none;
     }
-    .main-content { padding: 64px 0; }
-    .project-card {
-        background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
-        border: 1px solid rgba(255, 255, 255, .08);
-        border-radius: 20px;
-        padding: 22px;
-        box-shadow: var(--shadow-1);
-        margin-bottom: 40px;
+    .portfolio-item img{
+      width:100%; height:100%; object-fit:cover; display:block; opacity:.95;
+      transition: transform .3s ease, opacity .3s ease;
     }
-    .project-card h2 {
-        font-family: "MonumentExtended-Regular", Inter, sans-serif;
-        font-size: clamp(1.6rem, 3vw, 2rem);
-        margin-top: 0;
+    .portfolio-item:hover img{ transform:scale(1.05); opacity:1; }
+
+    /* =========================
+       FOOTER
+       ========================= */
+    footer{
+      padding:28px 0; border-top:1px solid rgba(255,255,255,.06);
+      color:#C9D6F2; font-size:.92rem; text-align:center;
     }
-    .project-card p {
-        color: #D6DEED;
-        line-height: 1.6;
-    }
-    .project-images {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 16px;
-        margin-top: 20px;
-    }
-    .project-images img {
-        width: 100%;
-        height: auto;
-        border-radius: 12px;
-    }
-    .btn {
-        padding: 12px 18px;
-        border-radius: 12px;
-        font-weight: 800;
-        text-decoration: none;
-        display: inline-block;
-        border: 1px solid rgba(255, 255, 255, .08);
-    }
-    .btn--primary {
-        background: linear-gradient(135deg, var(--brand-blue), var(--indigo));
-        color: white;
-        box-shadow: var(--shadow-2);
-    }
-    footer {
-        padding: 28px 0;
-        border-top: 1px solid rgba(255, 255, 255, .06);
-        color: #C9D6F2;
-        font-size: .92rem;
-        text-align: center;
-    }
-    footer a { color: #EAF1FF; text-decoration: none }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-    }
-    @media (max-width: 1000px) {
-        .grid {
-            grid-template-columns: 1fr 1fr;
-        }
-    }
-    @media (max-width: 640px) {
-        .grid {
-            grid-template-columns: 1fr;
-        }
-    }
-    .portfolio-item {
-        aspect-ratio: 4 / 3;
-        border-radius: 18px;
-        overflow: hidden;
-        position: relative;
-        background: #0f1115;
-        border: 1px solid rgba(255, 255, 255, .08);
-        display: block;
-        text-decoration: none;
-    }
-    .portfolio-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        opacity: .95;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .portfolio-item:hover img {
-        transform: scale(1.05);
-        opacity: 1;
-    }
-</style>
+    footer a{ color:#EAF1FF; text-decoration:none }
+  </style>
 </head>
 <body>
-    <header>
-  <div class="container nav">
-    <a href="index.html" class="brand">
-      <div class="brand__logo"><img src="imagens/logo05.png" alt="" srcset=""></div>
-    </a>
-        <nav id="menu" class="menu" aria-label="Navegação principal">
-        <button class="close-menu-button" aria-label="Fechar menu">&times;</button>
+
+  <!-- =========================
+       HEADER
+       ========================= -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <div class="brand__logo"><img src="imagens/logo05.png" alt=""></div>
+      </a>
+
+      <nav id="menu" class="menu" aria-label="Navegação principal">
         <a href="servicos.html">Serviços</a>
         <a href="portfolio.html">Portfólio</a>
         <a href="index.html#sobre">Sobre</a>
         <a href="index.html#contato">Contato</a>
         <a class="cta" href="index.html#contato">Solicitar projeto</a>
-</nav>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </svg>
-    </button>
-  </div>
-</header>
-    <main class="main-content">
-        <div class="container">
-            <h1 class="h1" style="text-align: center;">Portfólio Completo</h1>
-            <p class="section__desc" style="text-align: center;">Detalhes de alguns dos projetos de identidade visual e social media que desenvolvi.</p>
-            <div class="grid">
-                <a href="projeto-jefign.html" class="portfolio-item">
-                    <img src="mockup-jefing/Apresentaçao-08.jpg" alt="Identidade Visual JEFIGN">
-                </a>
-                <a href="projeto-Rebeca.html" class="portfolio-item">
-                    <img src="imagens/Logo Rebeca.png" alt="Identidade Visual Rebeca Camara">
-                </a>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="container">
-            <div>© <span id="yr"></span> JEFIGN — Visual Identity & Social Media</div>
-            <div><a href="index.html">Voltar para Home</a></div>
-        </div>
-    </footer>
-    <script>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <!-- =========================
+       CONTEÚDO
+       ========================= -->
+  <main class="main-content">
+    <div class="container">
+      <h1 class="h1" style="text-align:center;">Portfólio Completo</h1>
+      <p class="section__desc" style="text-align:center;">Detalhes de alguns dos projetos de identidade visual e social media que desenvolvi.</p>
+
+      <div class="grid">
+        <a href="projeto-jefign.html" class="portfolio-item">
+          <img src="mockup-jefing/Apresentaçao-08.jpg" alt="Identidade Visual JEFIGN">
+        </a>
+        <a href="projeto-Rebeca.html" class="portfolio-item">
+          <img src="imagens/Logo Rebeca.png" alt="Identidade Visual Rebeca Camara">
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+  <footer>
+    <div class="container">
+      <div>© <span id="yr"></span> JEFIGN — Visual Identity & Social Media</div>
+      <div><a href="index.html">Voltar para Home</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // ano no footer
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    const menuToggle = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('menu');
-    const closeMenuButton = document.querySelector('.close-menu-button');
+    // menu mobile (igual ao da index)
+    const burger = document.getElementById('burger');
+    const menu   = document.getElementById('menu');
 
-    function toggleMenu() {
-        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-        menuToggle.setAttribute('aria-expanded', !isExpanded);
-        menu.classList.toggle('is-open');
-        document.body.classList.toggle('menu-open'); // Essencial para o fundo sólido
-    }
-
-    menuToggle.addEventListener('click', toggleMenu);
-    closeMenuButton.addEventListener('click', toggleMenu);
-</script>
+    burger.addEventListener('click', ()=>{
+      if(menu.classList.contains('menu--open')){
+        menu.classList.remove('menu--open');
+        burger.textContent = '☰';
+      }else{
+        menu.classList.add('menu--open');
+        burger.textContent = '×';
+      }
+    });
+  </script>
 </body>
 </html>
