@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+  <title>Contato — JEFIGN</title>
+  <meta name="description" content="Entre em contato com a JEFIGN para desenvolvimento de identidade visual e social media." />
+
+  <!-- Inter (texto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-blue: #366BB3;
+      --ink:        #1E1E1E;
+      --indigo:     #5D57A1;
+      --sky:        #B5D1EF;
+      --paper:      #FAFAFA;
+      --muted:      #8EA5C4;
+      --radius:     16px;
+      --shadow-1:   0 10px 30px rgba(0,0,0,.12);
+      --shadow-2:   0 20px 50px rgba(0,0,0,.18);
+    }
+    @font-face{
+      font-family:"MonumentExtended-Regular";
+      src:url("fonte/MonumentExtended-Regular.otf") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--paper);
+      background: linear-gradient(180deg, #181A1F 0%, var(--ink) 100%);
+    }
+    .container{ width:min(1120px, 92%); margin-inline:auto; padding:40px 0; }
+
+    /* =========================
+       HEADER / NAV
+       ========================= */
+    header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(30,30,30,.85);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--paper); }
+    .brand__logo{ width:38px; height:38px; border-radius:10px; display:grid; place-items:center; box-shadow: var(--shadow-1); font-weight:800; }
+
+    .menu{display:flex; gap:24px; align-items:center;}
+    .menu a{ color:#e9eefb; text-decoration:none; font-weight:600; font-size:.95rem; opacity:.9; }
+    .menu a:hover{opacity:1; color:#fff}
+    .cta{ padding:10px 16px; border-radius:999px; font-weight:700; text-decoration:none; background: linear-gradient(135deg, var(--brand-blue), var(--indigo)); color:white; box-shadow: var(--shadow-1); border:1px solid rgba(255,255,255,.06); }
+    .burger{ display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:transparent; color:#fff }
+
+    @media (max-width: 768px) {
+      .menu{ display:none; }
+      .nav{ justify-content:space-between; }
+      .burger{ display:inline-grid; place-items:center }
+      .menu--open{
+        position:fixed; inset:64px 0 auto 0; display:grid; gap:18px;
+        background:#16171B; padding:20px; border-top:1px solid rgba(255,255,255,.06);
+      }
+      .menu--open a{ padding:10px 2px }
+    }
+
+    /* =========================
+       TÍTULOS
+       ========================= */
+    .h1{ margin:14px 0 24px; font-family:"MonumentExtended-Regular", Inter, sans-serif; font-weight:800; line-height:1.05; letter-spacing:.3px; font-size: clamp(2rem, 4.5vw, 3.2rem); text-align:center; }
+    .section__desc{ color:#D6DEED; margin-bottom:40px; max-width:70ch; text-align:center; }
+
+    /* =========================
+       FORMULÁRIO
+       ========================= */
+    form{
+      display:grid; gap:12px; max-width:720px; margin-inline:auto;
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+      padding:20px; border-radius:18px;
+    }
+    input, textarea{
+      background:#0f1115; border:1px solid rgba(255,255,255,.12); color:#EAF1FF;
+      padding:12px 14px; border-radius:12px; outline:none;
+    }
+    input::placeholder, textarea::placeholder{ color:#AEBBD4 }
+    textarea{ min-height:160px; resize:vertical }
+    .form__actions{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+    .btn{
+      padding:12px 18px; border-radius:12px; font-weight:800; text-decoration:none; display:inline-block; border:1px solid rgba(255,255,255,.08);
+    }
+    .btn--primary{ background: linear-gradient(135deg, var(--brand-blue), var(--indigo)); color:white; box-shadow: var(--shadow-2); }
+    .btn--whats{ background:#25D366; color:#0B1A0E; border:none; }
+    .helper{ color:#AEBBD4; font-size:.9rem; margin-top:6px; text-align:center; }
+
+    /* =========================
+       FOOTER
+       ========================= */
+    footer{
+      padding:28px 0; border-top:1px solid rgba(255,255,255,.06);
+      color:#C9D6F2; font-size:.92rem; text-align:center;
+    }
+    footer a{ color:#EAF1FF; text-decoration:none }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <div class="brand__logo"><img src="imagens/logo05.png" alt=""></div>
+      </a>
+
+      <nav id="menu" class="menu" aria-label="Navegação principal">
+        <a href="servicos.html">Serviços</a>
+        <a href="portfolio.html">Portfólio</a>
+        <a href="index.html#sobre">Sobre</a>
+        <a href="index.html#contato">Contato</a>
+        <a class="cta" href="index.html#contato">Solicitar projeto</a>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Abrir menu">☰</button>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="main-content">
+    <div class="container">
+      <h1 class="h1">Vamos conversar?</h1>
+      <p class="section__desc">Preencha o formulário e conte sobre seu projeto. Retorno rápido por e-mail ou WhatsApp.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Mensagem enviada! (Aguarde o Retorno)'); this.reset();">
+        <input type="text" name="nome" placeholder="Seu nome" required />
+        <input type="email" name="email" placeholder="Seu e-mail" required />
+        <input type="text" name="assunto" placeholder="Assunto (ex.: Identidade Visual)" />
+        <textarea name="mensagem" placeholder="Fale um pouco sobre o que você precisa…" required></textarea>
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Enviar mensagem</button>
+          <a class="btn btn--whats" href="https://wa.me/5598970184296" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        </div>
+        <div class="helper">Ou envie um e-mail para <b>jefign@gmail.com</b></div>
+      </form>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      © <span id="yr"></span> JEFIGN — Visual Identity & Social Media | <a href="index.html">Voltar para Home</a>
+    </div>
+  </footer>
+
+  <script>
+    // ano no footer
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // menu mobile
+    const burger = document.getElementById('burger');
+    const menu   = document.getElementById('menu');
+    burger.addEventListener('click', ()=>{
+      if(menu.classList.contains('menu--open')){
+        menu.classList.remove('menu--open');
+        burger.textContent = '☰';
+      }else{
+        menu.classList.add('menu--open');
+        burger.textContent = '×';
+      }
+    });
+  </script>
+
+</body>
+</html>

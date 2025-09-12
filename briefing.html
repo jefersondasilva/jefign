@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Briefing de Projeto — JEFIGN</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brand-blue: #366BB3;
+  --ink:        #1E1E1E;
+  --indigo:     #5D57A1;
+  --sky:        #B5D1EF;
+  --paper:      #FAFAFA;
+  --muted:      #8EA5C4;
+  --radius:     16px;
+  --shadow-1:   0 10px 30px rgba(0,0,0,.12);
+  --shadow-2:   0 20px 50px rgba(0,0,0,.18);
+}
+body{
+  margin:0; font-family: Inter, sans-serif;
+  color: var(--paper);
+  background: linear-gradient(180deg, #181A1F 0%, var(--ink) 100%);
+}
+.container{ width:min(1120px, 92%); margin:auto; padding:40px 0;}
+h1{font-size:2.5rem; margin-bottom:16px; text-align:center; font-weight:800;}
+h2{font-size:1.5rem; margin-top:32px; margin-bottom:8px; font-weight:700;}
+label{display:block; margin-top:12px; font-weight:600;}
+input, textarea, select{
+  width:100%; padding:12px; margin-top:4px;
+  border-radius:12px; border:1px solid rgba(255,255,255,.12);
+  background:#0f1115; color:#EAF1FF; outline:none;
+}
+textarea{ min-height:100px; resize:vertical;}
+button{
+  margin-top:20px; padding:14px 24px; border:none; border-radius:999px;
+  font-weight:700; background: linear-gradient(135deg, var(--brand-blue), var(--indigo));
+  color:white; cursor:pointer; box-shadow: var(--shadow-2);
+}
+.helper{margin-top:8px; font-size:.9rem; color:#AEBBD4;}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Briefing de Projeto — JEFIGN</h1>
+  <p style="text-align:center; color:#D6DEED; max-width:700px; margin:auto;">Preencha o formulário para nos enviar todas as informações necessárias para criar a identidade visual da sua marca. Inclua referências visuais, cores e materiais de exemplo.</p>
+
+  <form id="briefingForm" enctype="multipart/form-data">
+    <!-- 1. Informações do Cliente -->
+    <h2>1. Informações do Cliente</h2>
+    <label>Nome da empresa / marca
+      <input type="text" name="empresa" required>
+    </label>
+    <label>Nome do responsável / contato
+      <input type="text" name="responsavel" required>
+    </label>
+    <label>E-mail
+      <input type="email" name="email" required>
+    </label>
+    <label>Telefone / WhatsApp
+      <input type="text" name="telefone" required>
+    </label>
+    <label>Website / redes sociais
+      <input type="text" name="website">
+    </label>
+
+    <!-- 2. Sobre a Marca -->
+    <h2>2. Sobre a Marca</h2>
+    <label>Qual é o segmento / área de atuação?
+      <input type="text" name="segmento">
+    </label>
+    <label>Há quanto tempo está no mercado?
+      <input type="text" name="tempo">
+    </label>
+    <label>Quais os valores da marca?
+      <textarea name="valores"></textarea>
+    </label>
+    <label>Qual a missão da marca?
+      <textarea name="missao"></textarea>
+    </label>
+
+    <!-- 3. Objetivo do Projeto -->
+    <h2>3. Objetivo do Projeto</h2>
+    <label>Qual é o principal objetivo com este projeto?
+      <input type="text" name="objetivo">
+    </label>
+    <label>O que você espera que sua marca transmita para o público?
+      <textarea name="mensagem_marca"></textarea>
+    </label>
+    <label>Quais problemas ou desafios você quer resolver com este projeto?
+      <textarea name="desafios"></textarea>
+    </label>
+
+    <!-- 4. Público-Alvo -->
+    <h2>4. Público-Alvo</h2>
+    <label>Quem são os clientes ideais?
+      <textarea name="clientes"></textarea>
+    </label>
+    <label>Idade, gênero, localização
+      <input type="text" name="idade">
+    </label>
+    <label>Hábitos, interesses ou comportamentos relevantes
+      <textarea name="habitos"></textarea>
+    </label>
+    <label>Que tipo de linguagem / estilo você quer que a marca passe?
+      <input type="text" name="linguagem" placeholder="ex.: formal, moderna, divertida">
+    </label>
+
+    <!-- 5. Concorrência -->
+    <h2>5. Concorrência</h2>
+    <label>Principais concorrentes
+      <textarea name="concorrentes"></textarea>
+    </label>
+    <label>O que você gosta ou não gosta nas marcas concorrentes?
+      <textarea name="preferencias"></textarea>
+    </label>
+
+    <!-- 6. Estilo e Inspirações -->
+    <h2>6. Estilo e Inspirações</h2>
+    <label>Paletas de cores preferidas (ou cores a evitar)
+      <input type="text" name="cores">
+    </label>
+    <label>Tipos de fontes / estilos de texto que gosta
+      <input type="text" name="fontes">
+    </label>
+    <label>Exemplos de marcas ou designs que te inspiram
+      <input type="file" id="imagem" accept="image/*">
+      <span class="helper">Envie uma imagem de referência (opcional)</span>
+    </label>
+
+    <!-- 7. Serviços Contratados -->
+    <h2>7. Serviços Contratados / Necessidades</h2>
+    <label><input type="checkbox" name="servicos" value="Identidade Visual"> Identidade Visual</label>
+    <label><input type="checkbox" name="servicos" value="Design Social Media"> Design Social Media</label>
+    <label><input type="checkbox" name="servicos" value="Materiais Gráficos"> Materiais Gráficos</label>
+    <label><input type="checkbox" name="servicos" value="Outros"> Outros</label>
+
+    <!-- 8. Prazos e Entregáveis -->
+    <h2>8. Prazos e Entregáveis</h2>
+    <label>Data de início desejada
+      <input type="date" name="data_inicio">
+    </label>
+    <label>Data de entrega final desejada
+      <input type="date" name="data_entrega">
+    </label>
+    <label>Alguma etapa importante que deve ser respeitada?
+      <textarea name="etapas"></textarea>
+    </label>
+    <label>Formato dos arquivos esperados
+      <input type="text" name="formato" placeholder="Digital, Impressão, Editável…">
+    </label>
+
+    <!-- 9. Observações -->
+    <h2>9. Observações Adicionais</h2>
+    <textarea name="observacoes" placeholder="Algo importante que não foi perguntado"></textarea>
+
+    <button type="submit">Enviar Briefing</button>
+    <div id="resposta"></div>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById('briefingForm');
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const url = 'https://script.google.com/macros/s/AKfycbzNN6AbgglYB3SKfqggrP5oOLT3I-63CIOHXfK-hyHBFAfvbwW4-vrE0TmeGmn_zOqF/exec'; // sua URL do Apps Script
+  const formData = new FormData(form);
+  const file = document.getElementById('imagem').files[0];
+
+  if(file){
+    const reader = new FileReader();
+    reader.onload = async function(){
+      const base64 = reader.result.split(',')[1];
+      formData.append('imagem_referencia_data', base64);
+      formData.append('imagem_referencia_name', file.name);
+      formData.append('imagem_referencia_type', file.type);
+
+      const obj = {};
+      formData.forEach((v,k)=> obj[k]=v);
+      await fetch(url, { method:'POST', body: new URLSearchParams(obj) });
+      document.getElementById('resposta').textContent = 'Briefing enviado com sucesso!';
+      form.reset();
+    };
+    reader.readAsDataURL(file);
+  } else {
+    const obj = {};
+    formData.forEach((v,k)=> obj[k]=v);
+    await fetch(url, { method:'POST', body: new URLSearchParams(obj) });
+    document.getElementById('resposta').textContent = 'Briefing enviado com sucesso!';
+    form.reset();
+  }
+});
+</script>
+</body>
+</html>
