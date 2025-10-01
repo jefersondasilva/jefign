@@ -1,0 +1,26 @@
+RewriteEngine On
+
+# Redirecionar /admin para área administrativa com verificação de login
+RewriteRule ^admin/?$ admin/index.php [L]
+RewriteRule ^admin/(.*)$ admin/$1 [L]
+
+# Redirecionar /api para backend/api
+RewriteRule ^api/(.*)$ backend/api/$1 [L]
+
+# Rota para briefing
+RewriteRule ^briefing/?$ briefing.html [L]
+
+# Rota para envio de briefing
+RewriteRule ^submit-briefing/?$ backend/api/submit_briefing.php [L]
+
+# Bloquear acesso direto aos diretórios backend e config por segurança
+RewriteRule ^backend/ - [F,L]
+RewriteRule ^config/ - [F,L]
+
+# Permitir acesso aos arquivos estáticos
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ [NC]
+
+# Página inicial como fallback
+RewriteRule ^$ index.html [L]

@@ -169,7 +169,7 @@ button{
       <input type="text" name="fontes">
     </label>
     <label>Exemplos de marcas ou designs que te inspiram
-      <input type="file" id="imagem" accept="image/*">
+      <input type="file" name="imagem_referencia" id="imagem" accept="image/*">
       <span class="helper">Envie uma imagem de referência (opcional)</span>
     </label>
 
@@ -206,34 +206,82 @@ button{
 
 <script>
 const form = document.getElementById('briefingForm');
+const respostaDiv = document.getElementById('resposta');
+
 form.addEventListener('submit', async function(e){
   e.preventDefault();
-  const url = 'https://script.google.com/macros/s/AKfycbzNN6AbgglYB3SKfqggrP5oOLT3I-63CIOHXfK-hyHBFAfvbwW4-vrE0TmeGmn_zOqF/exec'; // sua URL do Apps Script
-  const formData = new FormData(form);
-  const file = document.getElementById('imagem').files[0];
-
-  if(file){
-    const reader = new FileReader();
-    reader.onload = async function(){
-      const base64 = reader.result.split(',')[1];
-      formData.append('imagem_referencia_data', base64);
-      formData.append('imagem_referencia_name', file.name);
-      formData.append('imagem_referencia_type', file.type);
-
-      const obj = {};
-      formData.forEach((v,k)=> obj[k]=v);
-      await fetch(url, { method:'POST', body: new URLSearchParams(obj) });
-      document.getElementById('resposta').textContent = 'Briefing enviado com sucesso!';
+  
+ 
+  respostaDiv.innerHTML = '<p style="color: #B5D1EF;">Enviando briefing...</p>';
+  
+  try {
+    const formData = new FormData(form);
+    
+ 
+    const servicosSelecionados = [];
+    const checkboxes = form.querySelectorAll('input[name="servicos"]:checked');
+    checkboxes.forEach(checkbox => {
+      servicosSelecionados.push(checkbox.value);
+    });
+    
+  
+    formData.append('servicos_json', JSON.stringify(servicosSelecionados));
+    
+    const response = await fetch('/submit-briefing', {
+       method: 'POST',
+       body: formData
+     });
+    
+    // Verificar se a resposta é OK
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status}`);
+    }
+    
+    // Obter o texto da resposta primeiro
+    const responseText = await response.text();
+    
+    // Tentar extrair JSON válido da resposta (ignorando warnings PHP)
+    let result;
+    try {
+      // Procurar pelo último JSON válido na resposta
+      const jsonMatch = responseText.match(/\{[^{}]*"success"[^{}]*\}$/);
+      if (jsonMatch) {
+        result = JSON.parse(jsonMatch[0]);
+      } else {
+        // Se não encontrar JSON, tentar parse direto
+        result = JSON.parse(responseText);
+      }
+    } catch (parseError) {
+      console.error('Resposta do servidor:', responseText);
+      throw new Error('Resposta inválida do servidor');
+    }
+    
+    if (result.success) {
+      respostaDiv.innerHTML = `
+        <div style="background: #1a4d3a; border: 1px solid #22c55e; border-radius: 12px; padding: 16px; margin-top: 16px;">
+          <p style="color: #22c55e; margin: 0; font-weight: 600;">✅ Briefing enviado com sucesso!</p>
+          <p style="color: #86efac; margin: 8px 0 0 0; font-size: 0.9rem;">Obrigado! Entraremos em contato em breve.</p>
+        </div>
+      `;
       form.reset();
-    };
-    reader.readAsDataURL(file);
-  } else {
-    const obj = {};
-    formData.forEach((v,k)=> obj[k]=v);
-    await fetch(url, { method:'POST', body: new URLSearchParams(obj) });
-    document.getElementById('resposta').textContent = 'Briefing enviado com sucesso!';
-    form.reset();
+    } else {
+      throw new Error(result.message || 'Erro desconhecido');
+    }
+    
+  } catch (error) {
+    console.error('Erro ao enviar briefing:', error);
+    respostaDiv.innerHTML = `
+      <div style="background: #4d1a1a; border: 1px solid #ef4444; border-radius: 12px; padding: 16px; margin-top: 16px;">
+        <p style="color: #ef4444; margin: 0; font-weight: 600;">❌ Erro ao enviar briefing</p>
+        <p style="color: #fca5a5; margin: 8px 0 0 0; font-size: 0.9rem;">${error.message}</p>
+      </div>
+    `;
   }
+});
+
+
+form.addEventListener('input', function() {
+  respostaDiv.innerHTML = '';
 });
 </script>
 </body>
