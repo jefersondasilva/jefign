@@ -2,9 +2,9 @@
 
 // Configurações do banco de dados
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'jeferson');
-define('DB_USER', 'root');
-define('DB_PASS', ''); 
+define('DB_NAME', 'u934070713_Jefign_db');
+define('DB_USER', 'u934070713_ojefersonsilva');
+define('DB_PASS', '@Javascript56'); 
 define('DB_CHARSET', 'utf8mb4');
 
 
